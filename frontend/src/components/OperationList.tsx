@@ -34,7 +34,7 @@ export default function OperationList() {
 
 	return (
 		<div className="container mt-3">
-			<div className=" d-flex justify-content-center mb-3">
+			<div className="d-flex justify-content-center mb-3">
 				<label className="mr-3 w-25 align-items-center">Filtra por id</label>
 				<input
 					type="text"
@@ -44,32 +44,38 @@ export default function OperationList() {
 					className="form-control w-25"
 				/>
 			</div>
-			<table className="table">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Marketer Id</th>
-						<th scope="col">Comercializadora Id</th>
-						<th scope="col">Tipo de operación</th>
-						<th scope="col">Cantidad de gas</th>
-						<th scope="col">Precio de venta</th>
-						<th scope="col">Moneda actual</th>
-					</tr>
-				</thead>
-				{filteredOperations.map((operation, index) => (
-					<tbody key={operation.id}>
+			{filteredOperations.length > 0 ? (
+				<table className="table">
+					<thead>
 						<tr>
-							<th scope="row">{index + 1}</th>
-							<td>{operation.marketerId}</td>
-							<td>{operation.clientId}</td>
-							<td>{operation.type}</td>
-							<td>{operation.amount}</td>
-							<td>{operation.price}</td>
-							<td>{operation.currenty_currency}</td>
+							<th scope="col">#</th>
+							<th scope="col">Marketer Id</th>
+							<th scope="col">Comercializadora Id</th>
+							<th scope="col">Tipo de operación</th>
+							<th scope="col">Cantidad de gas</th>
+							<th scope="col">Precio de venta</th>
+							<th scope="col">Moneda actual</th>
 						</tr>
-					</tbody>
-				))}
-			</table>
+					</thead>
+					{filteredOperations.map((operation, index) => (
+						<tbody key={operation.id}>
+							<tr>
+								<th scope="row">{index + 1}</th>
+								<td>{operation.marketerId}</td>
+								<td>{operation.clientId}</td>
+								<td>{operation.type}</td>
+								<td>{operation.amount}</td>
+								<td>{operation.price}</td>
+								<td>{operation.currenty_currency}</td>
+							</tr>
+						</tbody>
+					))}
+				</table>
+			) : (
+				<div className="text-center">
+					<p className="text-danger">No hay operaciones con ese Id</p>
+				</div>
+			)}
 		</div>
 	);
 }
