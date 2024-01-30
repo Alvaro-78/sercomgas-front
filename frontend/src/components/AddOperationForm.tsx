@@ -30,16 +30,14 @@ const AddOperationForm = () => {
 				'http://localhost:3001/operations',
 				operation
 			);
+			if (response.status === 200) {
+				alert('Operación agregada correctamente.');
+			}
 		} catch (error) {
 			if (axios.isAxiosError(error)) {
-				// Manejo de errores específicos de Axios.
 				console.error('Error de Axios:', error.message);
 				alert('Error al hacer la solicitud.');
-			} else {
-				// Manejo de errores inesperados.
-				console.error('Error inesperado:', error);
-				alert('Error inesperado al hacer la solicitud.');
-			}
+			} 
 		}
 
 		setOperation({
