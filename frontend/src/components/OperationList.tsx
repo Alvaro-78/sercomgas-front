@@ -4,22 +4,44 @@ import { IOperation } from '../interfaces/Operation';
 
 export default function OperationList() {
 	const [operations, setOperations] = useState<IOperation[]>([]);
+	const [searchTerm, setSearchTerm] = useState('');
+	const [filteredOperations, setFilteredOperations] = useState<IOperation[]>(
+		[]
+	);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const response = await axios.get('http://localhost:3001/operations');
 				setOperations(response.data);
+				setFilteredOperations(response.data);
 			} catch (error) {
 				console.error('Error fetching data: ', error);
 			}
 		};
 		fetchData();
 	}, []);
-	console.log(operations);
+
+	useEffect(() => {
+		const results = operations.filter((operation) =>
+			operation.marketerId
+				.toString()
+				.toLowerCase()
+				.includes(searchTerm.toLowerCase())
+		);
+		setFilteredOperations(results);
+	}, [searchTerm, operations]);
 
 	return (
 		<div className="container mt-3">
+			<input
+				type="text"
+				placeholder="Buscar por Marketer Id..."
+				value={searchTerm}
+				onChange={(e) => setSearchTerm(e.target.value)}
+				className="form-control mb-3"
+			/>
+
 			<table className="table">
 				<thead>
 					<tr>
@@ -32,10 +54,10 @@ export default function OperationList() {
 						<th scope="col">Moneda actual</th>
 					</tr>
 				</thead>
-				{operations.map((operation) => (
-					<tbody>
-						<tr key={operation.id}>
-							<th scope="row">1</th>
+				{filteredOperations.map((operation, index) => (
+					<tbody key={operation.id}>
+						<tr>
+							<th scope="row">{index + 1}</th>
 							<td>{operation.marketerId}</td>
 							<td>{operation.clientId}</td>
 							<td>{operation.type}</td>
