@@ -34,14 +34,16 @@ export default function OperationList() {
 
 	return (
 		<div className="container mt-3">
-			<input
-				type="text"
-				placeholder="Buscar por Marketer Id..."
-				value={searchTerm}
-				onChange={(e) => setSearchTerm(e.target.value)}
-				className="form-control mb-3"
-			/>
-
+			<div className=" d-flex justify-content-center mb-3">
+				<label className="mr-3 w-25 align-items-center">Filtra por id</label>
+				<input
+					type="text"
+					placeholder="Buscar por Marketer Id..."
+					value={searchTerm}
+					onChange={(e) => setSearchTerm(e.target.value)}
+					className="form-control w-25"
+				/>
+			</div>
 			<table className="table">
 				<thead>
 					<tr>
