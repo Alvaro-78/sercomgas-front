@@ -57,7 +57,7 @@ const AddOperationForm = () => {
 			<div className="row">
 				<div className="col-md-4 mb-3">
 					<label htmlFor="validationTooltip01" className="form-label">
-						Id de la Comercializadora
+						Id del Marketer
 					</label>
 					<input
 						name="marketerId"
@@ -71,7 +71,7 @@ const AddOperationForm = () => {
 				</div>
 				<div className="col-md-4 mb-3">
 					<label htmlFor="tradingPartnerName" className="form-label">
-						Id de la Comercializadora a Comerciar
+						Id de la Comercializadora
 					</label>
 					<input
 						name="clientId"
