@@ -24,8 +24,8 @@ export default function OperationList() {
 				<thead>
 					<tr>
 						<th scope="col">#</th>
-						<th scope="col">Marketer</th>
-						<th scope="col">Comercializadora</th>
+						<th scope="col">Marketer Id</th>
+						<th scope="col">Comercializadora Id</th>
 						<th scope="col">Tipo de operación</th>
 						<th scope="col">Cantidad de gas</th>
 						<th scope="col">Precio de venta</th>
